@@ -30,6 +30,7 @@ void Add(int *head, int data){ //getting the address of the head node.... so tha
 	cout <<"\nhead's Address: at function: "<<head;
 	int ifg = 203;
 	head = &ifg;
+	
 	/*if head is null, it means there are no data 
 	if (head == NULL){
 		node *current = new node;
