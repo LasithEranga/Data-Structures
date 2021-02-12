@@ -11,11 +11,18 @@ struct node{
 };
 
 void Add(node *&head, node *&last, int data);
+void PrintList(node *head);
 
 int main(){
-	node *head;
+	node *head=NULL;
 	node *last;
-	Add(head,last,10);
+	int input;
+	for (int i=0; i<3; i++){
+		cin>>input;
+		Add(head,last,input);
+	}
+	PrintList(head);
+
 }
 
 //creating functions for linked lists
@@ -40,6 +47,24 @@ void Add(node *&head, node *&last,int data){ //getting the address of the head n
 	}
 }
 
+
+void PrintList(node *head){
+	//takes the head and print elements until last node is found
+	node *current = head;
+	if (current!=NULL){
+		while (current!=NULL){
+		cout << current->data <<",";
+		current=current->next;//set current to next element;
+		}
+		cout <<endl;
+	}
+	else {
+		//the list is empty 
+		//head is pointing at nowhere
+		cout <<"List is empty"<<endl;
+	}
+	
+}
 
 
 
