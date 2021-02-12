@@ -10,34 +10,34 @@ struct node{
 	node *next; //struct 
 };
 
-void Add(int *head, int data);
+void Add(node *&head, node *&last, int data);
 
 int main(){
-	int *head;
-	int id =10;
-	head = &id;
-	/*head = Add(head,10);
-	cout << "head data = "<< head->data <<endl;/*"\n"<<
-			"head is pointing at :"<<head->next->data;*/
-	cout <<"head's Address: at main: "<<&head;
-	Add(head,20);
-	cout <<"head's Address: at main: "<<*head;
+	node *head;
+	node *last;
+	Add(head,last,10);
 }
 
 //creating functions for linked lists
-void Add(int *head, int data){ //getting the address of the head node.... so that I can change the address it's pointing
+void Add(node *&head, node *&last,int data){ //getting the address of the head node.... so that I can change the address it's pointing
 	//if it just get the pointing address of the head, i won't be able to change the pointing address
-	cout <<"\nhead's Address: at function: "<<head;
-	int ifg = 203;
-	head = &ifg;
 	
-	/*if head is null, it means there are no data 
+	//if head is null, it means there are no data 
 	if (head == NULL){
-		node *current = new node;
-		current->data = data;
-		current->next = NULL;
-		
-	}*/
+		node *temp = new node; //create a new node and assign it to the head node. 
+		temp->data = data;
+		temp->next = NULL;
+		head = last = temp;
+	}
+	else { //head is pointing at some data 
+	//by using last, we can track the last element then add newly added data element to that element.
+	//we can travel until last element from the head, but that loop will take n time to find last element when n elements are available
+	node *temp = new node;
+	temp->data = data;
+	temp->next = NULL;
+	last->next = temp;
+	last = temp;
+	}
 }
 
 
